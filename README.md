@@ -1,3 +1,39 @@
+# Library Management System API
+
+A Node.js/Express REST API for managing library operations with user authentication, book management, and reader services.
+
+## Live Demo
+Base URL: `https://library-management-backend-clob.onrender.com`
+
+## Setup & Installation
+
+### Prerequisites
+- Node.js v14+
+- MongoDB
+
+### Local Development
+```bash
+# Clone repository
+git clone <repository-url>
+cd library-system
+
+# Install dependencies
+npm install
+
+# Configure environment
+cp .env.example .env
+# Update .env with your values:
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_secret_key
+PORT=5000
+
+# Start development server
+npm run dev
+
+# Run tests
+npm test
+```
+
 Replace `your_mongodb_connection_string` with your actual MongoDB connection string and `your_secure_jwt_secret` with a secure random string.
 
 ## Running the Application
@@ -62,7 +98,7 @@ npm test
 ```
 
 You can also use Postman or any API testing tool to manually test the endpoints. For protected routes, include the JWT token in the Authorization header:
-Authorization: Bearer <your_token_here>
+Authorization: Bearer <jwt_token>
 
 ```plaintext
 
@@ -72,11 +108,13 @@ Example test case:
 ```
 
 POST /api/users/signup
-Body: {
-"name": "Jane Author",
-"email": "[jane@example.com](mailto:jane@example.com)",
-"password": "securepass123",
-"role": "author"
+Content-Type: application/json
+
+{
+  "name": "Jane Author",
+  "email": "[jane@example.com](mailto:jane@example.com)",
+  "password": "securepass123",
+  "role": "author"
 }
 
 ```plaintext
@@ -85,9 +123,11 @@ Body: {
 ```
 
 POST /api/users/login
-Body: {
-"email": "[jane@example.com](mailto:jane@example.com)",
-"password": "securepass123"
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "password": "securepass123"
 }
 
 ```plaintext
@@ -96,11 +136,13 @@ Body: {
 ```
 
 POST /api/books/create
-Headers: Authorization: Bearer <token_from_login>
-Body: {
-"title": "My New Book",
-"genre": "Science Fiction",
-"stock": 5
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{
+  "title": "Sample Book",
+  "genre": "Fiction",
+  "stock": 10
 }
 
 ```plaintext
@@ -112,7 +154,6 @@ GET /api/books
 
 ```plaintext
 ```
-
 
 Render will automatically deploy your application and provide you with a URL.
 
