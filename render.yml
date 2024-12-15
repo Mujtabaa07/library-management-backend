@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: library-management-system
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+    healthCheckPath: /
+    autoDeploy: true
+    repo: https://github.com/yourusername/library-management-system
+    branch: main
+    numInstances: 1
+    pullRequestPreviewsEnabled: true
+
