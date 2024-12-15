@@ -113,21 +113,6 @@ GET /api/books
 ```plaintext
 ```
 
-## Deployment
-
-This application is configured for easy deployment on Render. Follow these steps:
-
-1. Push your code to a GitHub repository.
-2. Sign up for a Render account at https://render.com/.
-3. In the Render dashboard, click "New +" and select "Web Service".
-4. Connect your GitHub repository.
-5. Configure the deployment:
-- Name: "library-management-system" (or your preferred name)
-- Environment: Node
-- Build Command: `npm install`
-- Start Command: `npm start`
-6. Add the environment variables (MONGO_URI and JWT_SECRET) in the Render dashboard.
-7. Click "Create Web Service".
 
 Render will automatically deploy your application and provide you with a URL.
 
