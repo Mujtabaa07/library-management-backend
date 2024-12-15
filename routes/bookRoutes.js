@@ -23,17 +23,17 @@ router.post('/create', protect, authorOnly, async (req, res) => {
 // Get all books or search by title, author, or genre
 router.get('/', async (req, res) => {
   try {
-    const { title, author, genre } = req.query;
+    const { title } = req.query;
     let query = {};
 
-    if (title) query.title = new RegExp(title, 'i');
-    if (author) query.author = author;
-    if (genre) query.genre = new RegExp(genre, 'i');
+    if (title) {
+      query.title = { $regex: title, $options: 'i' };
+    }
 
-    const books = await Book.find(query).populate('author', 'name');
+    const books = await Book.find(query).sort({ title: 1 }); // Add sorting
     res.json(books);
   } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
+    res.status(500).json({ message: error.message });
   }
 });
 
@@ -93,4 +93,3 @@ router.delete('/delete/:id', protect, authorOnly, async (req, res) => {
 });
 
 module.exports = router;
-
