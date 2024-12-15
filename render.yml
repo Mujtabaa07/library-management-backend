@@ -12,7 +12,7 @@ services:
         sync: false
     healthCheckPath: /
     autoDeploy: true
-    repo: https://github.com/yourusername/library-management-system
+    repo: https://github.com/Mujtabaa07/library-management-backend
     branch: main
     numInstances: 1
     pullRequestPreviewsEnabled: true
