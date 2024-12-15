@@ -156,6 +156,29 @@ GET /api/books
 ```
 
 Render will automatically deploy your application and provide you with a URL.
+Testing
+Local Tests
+```
+# Run all tests
+npm test
+
+# Watch mode
+npm run test:watch
+```
+Postman Collection
+Import collection from postman/Library_API.json
+Set environment variables:
+BASE_URL: https://library-management-backend-clob.onrender.com
+TOKEN: Login response token
+
+Error Responses
+```
+{
+  "message": "Error description"
+}
+```
+###Rate Limiting
+100 requests per IP per 15 minutes
 
 ## Contributing
 
